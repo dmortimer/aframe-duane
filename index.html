@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^5.1.2/dist/aframe-animation-component.min.js"></script>
+</head>
+<body>
+
+    <a-scene fog="type: exponential; density: 0.12; color: #ECECEC;">
+        <!-- can't see background with fog-->
+        <!-- <a-sky radius="30" src="assets/360_world.jpg"></a-sky> -->
+
+        <!-- TV BOX GROWS -->
+        <a-box 
+            position="3 2 1" 
+            rotation="0 45 0" 
+            material="src: assets/tv.png"
+            animation="property: scale; dur: 10000; to: 3; loop: true;"
+        />
+        </a-box>
+
+         <!-- HOST BOX SPINS -->
+         <a-box 
+            position="3 3 -6" 
+            rotation="0 45 0" 
+            material="src: assets/HOST.png"
+            height="3"
+            width="0.5"
+            depth="0.5"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
+         /></a-box>
+         <a-box 
+            position="1 2 -7" 
+            rotation="0 45 0" 
+            material="src: assets/HOST.png"
+            height="3"
+            width="0.5"
+            depth="0.5"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
+         /></a-box>
+         <a-box 
+            position="-1 1 -8" 
+            rotation="0 45 0" 
+            material="src: assets/HOST.png"
+            height="3"
+            width="0.5"
+            depth="0.5"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
+         /></a-box>
+
+        
+        <!-- STATIONARY SPHERE -->
+        <a-entity 
+            geometry="primitive:sphere;" 
+            position="-3 0 -5" 
+            material="shader:gif;src:url(assets/duane.gif);" 
+            rotation="0 -80 0"
+        >
+        </a-entity>
+
+        <!-- SKY HEAD -->
+        <a-image position="0 18 0" rotation="90 0 0" width="40" height="20" src="assets/duan.png"></a-image>
+
+        <!-- STATIONARY ICOSAHEDRON -->
+        <a-icosahedron position="-6 3 3" rotation="180 20 180"  material="src:assets/duan.png"></a-icosahedron>
+
+
+
+        <!-- STATIONARY SPINNING SPHERE -->
+        <a-entity 
+            geometry="primitive:sphere;" 
+            position="10 5 -5" 
+            material="shader:gif;src:url(assets/duane.gif);" 
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: easeInSine;"
+            scale="2 2 2"
+        >
+        </a-entity>
+
+        <!-- ORBITING SPHERES -->
+        <a-entity position="0 0 0" animation__position="property: rotation; dur: 10000; loop: true; to: 0 0 360">
+            <a-entity 
+                id="sphere2" 
+                geometry="primitive:sphere;" 
+                position="-10 0 0" 
+                material="shader:gif;src:url(assets/duane.gif);" 
+            >
+            </a-entity>
+        </a-entity>
+
+        <a-entity position="0 0 0" animation__position="property: rotation; dur: 10000; loop: true; to: 360 0 ">
+                <a-entity 
+                    geometry="primitive:sphere;" 
+                    position="0 5 0" 
+                    material="shader:gif;src:url(assets/duane.gif);"
+                    rotation="340 90 300" 
+                >
+                </a-entity>
+        </a-entity>
+
+        <a-entity position="0 0 0" animation__position="property: rotation; dur: 3000; loop: true; to: 0 360 0 ">
+                <a-entity 
+                    geometry="primitive:sphere;" 
+                    position="0 0 10" 
+                    material="shader:gif;src:url(assets/duane.gif);"
+                    rotation="0 50 0" 
+                    animation="property: rotation; dur: 3000; loop: true; to: 0 180 0 "
+                >
+                </a-entity>
+        </a-entity>
+
+        <!-- ROTATING HEADS -->
+
+        <a-entity position="0 0 0" animation__position="property: rotation; dur: 10000; loop: true; to: 0 360 0 ">
+                <a-image position="-3 8 -12" width="20" height="10" src="assets/duan.png"></a-image>
+                <a-image position="-3 8 12" width="20" height="10" src="assets/duan.png"></a-image>
+        </a-entity>
+
+        <!-- MUSIC AT INITIAL POSITION -->
+        <a-entity position="0 0 0" sound="src: assets/duane-song-muffled.wav; autoplay: true; loop: true; rolloffFactor: 2; refDistance: 1; poolSize: 1;" ></a-entity>
+    </a-scene>
+
+    <!-- <script type="text/javascript" src="app.js"></script> -->
+</body>
+</html>
