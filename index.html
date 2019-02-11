@@ -5,15 +5,16 @@
     <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component@^5.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/gladeye/aframe-preloader-component/1.0.2/dist/aframe-preloader-component.min.js"></script>
 </head>
 <body>
 
-    <a-scene fog="type: exponential; density: 0.12; color: #ECECEC;">
+    <a-scene fog="type: exponential; density: 0.12; color: #ECECEC;" preloader>
         <!-- can't see background with fog-->
         <!-- <a-sky radius="30" src="assets/360_world.jpg"></a-sky> -->
 
         <a-assets>
-            <audio id="song" src="assets/duane-song-muffled.mp3"></audio>
+            <audio id="song" src="assets/duane-song-muffled.mp3" preload="auto"></audio>
             <img id="host" src="assets/host.png">
             <img id="face" src="assets/duan.png">
         </a-assets>
